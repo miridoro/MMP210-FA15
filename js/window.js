@@ -1,8 +1,43 @@
 function setup() {
     //create the Canvas
+    // setup function runs once
     createCanvas(windowWidth, windowHeight);
     
-    drawWindow(65, 90);
+//    drawWindow(65, 90, 'gold');
+//    drawWindow(180, 90, 'blue');
+//    drawWindow(295, 90, 'purple');
+    
+    
+    
+    var x = 0;
+    var y = 0;
+   
+    var gridwidth = width - 100;
+    
+    for(var i = 0; i < 100; i ++)
+    {
+        console.log(i);
+        fill('gold');
+        drawWindow(x, y);
+       
+        
+//    stroke('purple');
+        // increment our x
+        x += 120;
+       
+        
+        //check if x is past the grid width
+        
+        if(x > gridwidth) {
+        //set x back to the beginning
+            x= 0;
+            y += 270;
+            
+        } //end if
+        
+       
+        
+    } //end for loop
 
 
 //    //top box
@@ -62,8 +97,19 @@ function draw() {
 }
 
 function drawWindow(startX, startY) {
-    fill('DimGrey');
-    rect(startX, startY, 140 - 50, 200);
+//    noStroke();
+    fill('lightblue');
+    var winWidth =100;
+    var winHeight = 250;
+    rect(startX, startY, winWidth, winHeight);
+    
+    line(startX + winWidth/2, startY, startX + winWidth/2, startY + winHeight);
+    
+    line(startX, startY * .333, startX + winWidth, startY * .333);
+    
+    line(startX, startY * .666, startX + winWidth, startY * .666);
 }
+
+
 
 
