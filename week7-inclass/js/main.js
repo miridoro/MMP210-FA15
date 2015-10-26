@@ -10,9 +10,15 @@ function Bubble() {
     this.bubbleSize = this.r*2;  //width and height are twice the radius
     this.c = fill('yellow');
     
+    
     //method: draw the bubble
     this.drawBubble = function(){
     ellipse(this.x, this.y, this.bubbleSize, this.bubbleSize);
+    }
+    
+    this.changeColor = function() {
+        fill("orange");
+        this.drawBubble();
     }
     
     
@@ -23,7 +29,7 @@ function setup(){
     var cnv = createCanvas(windowWidth,windowHeight);
     cnv.parent("windows");
     
-    var myArray = [];
+    
     //add stuff to the array using a loop
     //create an array
     for(var i=0; i<100; i++) {
@@ -62,17 +68,19 @@ function setup(){
 //listen for mouse presses with P5 mousePressed method
 function mousePressed() {
     //check this is working
-    console.log("mouse Pressed");
+//    console.log("mouse Pressed");
     
     //loop through the bubbles and see if mouse inside
+    var  d;
+    var c;
     
     for(var i=0; i< myArray.length; i++) {
-        // if dont comment this out, then wont be able to see coordinates in console  
-        //        myArray[i] += 10;
+       d = dist(mouseX, mouseY, myArray[i].x, myArray[i].y);
         
-        
-        console.log(myArray);
+        if(d < myArray[i].r) {
+//            console.log("circle is clicked");
+          myArray[i].changeColor();
+           
     }
-    
-    
+}
 }
