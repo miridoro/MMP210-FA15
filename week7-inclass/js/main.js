@@ -26,9 +26,9 @@ function Bubble() {
 
 function setup(){
     //create the canvas. put into a variable to associate with an element
-//    var cnv = createCanvas(windowWidth,windowHeight);
-//    cnv.parent("windows");
-    createCanvas(windowWidth,windowHeight);
+    var cnv = createCanvas(windowWidth,windowHeight);
+    cnv.parent("windows");
+  
     
     //add stuff to the array using a loop
     //create an array
