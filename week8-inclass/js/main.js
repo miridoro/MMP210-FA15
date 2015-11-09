@@ -4,8 +4,9 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     
     
-    var x = 0;
-    var y = 0;
+    
+    
+    
 //     var gridwidth = width - 100;
    // drawPattern(x, y);
     
@@ -15,7 +16,38 @@ function setup() {
 
 function draw() {
      background('orange');  
-     drawPattern(105, 105)
+    var x = 105;
+    var y = 105;
+     drawPattern(x, y);
+    
+      var gridwidth = width - 10;
+    
+    for(var i = 0; i < 30; i ++)
+    {
+        console.log(i);
+//        fill('gold');
+        drawPattern(x, y);
+       
+        
+//    stroke('purple');
+        // increment our x
+        x += 200;
+       
+        
+        //check if x is past the grid width
+        
+        if(x > gridwidth) {
+        //set x back to the beginning
+            x= 105;
+            y += 205;
+            
+        } //end if
+        
+       
+        
+    } //end for loop
+    
+    
 }
 
 
@@ -26,34 +58,40 @@ function drawPattern(startX, startY) {
     strokeWeight(3);
     stroke('black');
 
-    translate(startX, startY);
+   
+//    translate(startX, startY);
+    
     
     fill('orange');
     
-    //push(); 
-        //rotate(frameCount / -100.0);
+//    push(); 
+//        rotate(frameCount / -100.0);
         fill('yellow');
-        polygon(0., 0., 100, 7);
-        // rotate(frameCount / -100.0);
+        polygon(startX, startY, 100, 7);
+//         rotate(frameCount / -100.0);
 
-    //pop();
+//    pop();
     
+//    push();
     //fill('orange');
-    polygon(0, 0, 70, 7);
-    //  rotate(frameCount / 50.0);
+    polygon(startX, startY, 70, 7);
+//      rotate(frameCount / 50.0);
     fill('yellow');
-    polygon(0, 0, 50, 5);
-    //pop();
+    polygon(startX, startY, 50, 5);
+//    pop();
 
     //A design for a simple flower
-    //translate(110, 110);
-
+//    translate(110, 110);
+    
+    push();
+    translate(startX, startY);
     
     for (var i = 0; i < 10; i++) {
+        
         ellipse(0, 15, 6, 22);
         rotate(PI / 5);
     }
-    // pop();
+     pop();
 }
 
 
