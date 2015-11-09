@@ -39,9 +39,6 @@ function setup() {
 
 } //end setup
 
-function draw() {
-
-}
 
 function drawWindow(startX, startY) {
 //    noStroke();
@@ -53,7 +50,6 @@ function drawWindow(startX, startY) {
     var winWidth =100;
     var winHeight = 250;
     fill('LightBlue');
-    ellipse(startX, startY, 100, 100);
     rect(startX + 20, startY, winWidth - 40, winHeight);
     fill('black');
     rect(startX + 20, startY + 170, winWidth - 40, winHeight -170);
