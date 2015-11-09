@@ -1,13 +1,37 @@
+var cicleSize;
+var circleX, circleY;
+
 function setup() {
     //create the Canvas
     
     createCanvas(windowWidth, windowHeight);
+   
+    
+}
 
+function drawButton() {
+    cirlceX = 120 + 70;
+    circleY = 50;
+    circleSize = 80;
+    noStroke();
+    ellipse(120 + 70, 50, circleSize, circleSize);
+    fill('black');
+    triangle(100 + 70, 75, 100 + 70, 25, 150 + 70, 50);
+    textSize(25);
+    fill('black');
+    text("Press Play", 15, 55);
+    
     
 }
 
 function draw() {
-     background('orange');  
+     background('orange');
+    fill('white');
+    drawButton();
+    
+  
+    
+   
 
     //drawPattern(300, 300);
     
@@ -17,7 +41,7 @@ function draw() {
     console.log("start loop")
     
     for(var x = 105; x < width - 100; x += 200)
-        for(var y = 105; y < height - 100; y += 200)
+        for(var y = 205; y < height - 100; y += 200)
     {
         //console.log(i, x, y);
         drawPattern(x, y);
@@ -49,7 +73,7 @@ function drawPattern(startX, startY) {
     push();
     fill('orange');
     rotate((frameCount / -(100.0)));
-    polygon(0, 0, 90 - startX/100.- startY/80., 7);
+    polygon(0, 0, 80, 7);
     
     pop();
     
@@ -57,7 +81,7 @@ function drawPattern(startX, startY) {
     fill('yellow');
     rotate(frameCount / 50.0);
     var radius = 20 + startX/100.+ startY/80.;
-    polygon(0, 0, radius, 5);
+    polygon(0, 0, 50, 5);
     
     
 
@@ -88,3 +112,19 @@ function polygon(x, y, radius, npoints) {
   }
   endShape(CLOSE);  
 }
+
+function mousePressed() {
+    //check this is working
+//    console.log("mouse Pressed");
+    
+    //loop through the bubbles and see if mouse inside
+    var  d; 
+       d = dist(mouseX, mouseY, cirlceX, circleY);
+        
+        if(d < circleSize/2) {
+            console.log("circle is clicked");
+             
+    }
+}
+
+
