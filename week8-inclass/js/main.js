@@ -2,50 +2,27 @@ function setup() {
     //create the Canvas
     
     createCanvas(windowWidth, windowHeight);
-    
-    
-    
-    
-    
-//     var gridwidth = width - 100;
-   // drawPattern(x, y);
-    
 
     
 }
 
 function draw() {
      background('orange');  
-    var x = 105;
-    var y = 105;
-     drawPattern(x, y);
+
+    //drawPattern(300, 300);
     
-      var gridwidth = width - 10;
+
+    //console.log("gridwidth: " + gridwidth)
     
-    for(var i = 0; i < 30; i ++)
+    console.log("start loop")
+    
+    for(var x = 105; x < width - 100; x += 200)
+        for(var y = 105; y < height - 100; y += 200)
     {
-        console.log(i);
-//        fill('gold');
+        //console.log(i, x, y);
         drawPattern(x, y);
        
-        
-//    stroke('purple');
-        // increment our x
-        x += 200;
-       
-        
-        //check if x is past the grid width
-        
-        if(x > gridwidth) {
-        //set x back to the beginning
-            x= 105;
-            y += 205;
-            
-        } //end if
-        
-       
-        
-    } //end for loop
+    } 
     
     
 }
@@ -53,44 +30,49 @@ function draw() {
 
 
 function drawPattern(startX, startY) {
+    push();
     //    noStroke();
 
     strokeWeight(3);
     stroke('black');
 
-   
-//    translate(startX, startY);
+    
+    translate(startX, startY);
     
     
-    fill('orange');
-    
-//    push(); 
-//        rotate(frameCount / -100.0);
+    push();
+        rotate(frameCount / -100.0);
         fill('yellow');
-        polygon(startX, startY, 100, 7);
-//         rotate(frameCount / -100.0);
-
-//    pop();
+        polygon(0, 0, 100, 7);
+    pop();
     
-//    push();
-    //fill('orange');
-    polygon(startX, startY, 70, 7);
-//      rotate(frameCount / 50.0);
+    push();
+    fill('orange');
+    rotate((frameCount / -(100.0)));
+    polygon(0, 0, 90 - startX/100.- startY/80., 7);
+    
+    pop();
+    
+    push();
     fill('yellow');
-    polygon(startX, startY, 50, 5);
-//    pop();
+    rotate(frameCount / 50.0);
+    var radius = 20 + startX/100.+ startY/80.;
+    polygon(0, 0, radius, 5);
+    
+    
 
     //A design for a simple flower
 //    translate(110, 110);
     
-    push();
-    translate(startX, startY);
-    
+   
+//    translate(startX, startY);
+    fill('white');
     for (var i = 0; i < 10; i++) {
         
         ellipse(0, 15, 6, 22);
         rotate(PI / 5);
     }
+    pop();
      pop();
 }
 
