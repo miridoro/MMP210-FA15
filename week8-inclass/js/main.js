@@ -1,5 +1,8 @@
 var cicleSize;
 var circleX, circleY;
+var x, y;
+var rot = 0;
+
 
 function setup() {
     //create the Canvas
@@ -17,17 +20,27 @@ function drawButton() {
     ellipse(120 + 70, 50, circleSize, circleSize);
     fill('black');
     triangle(100 + 70, 75, 100 + 70, 25, 150 + 70, 50);
-    textSize(25);
+    textSize(23);
     fill('black');
     text("Press Play", 15, 55);
-    
-    
+}
+
+function drawButton2() {
+    noStroke();
+    ellipse(120 + 70, 50, 80, 80);
+    fill('black');
+    rect(175, 25, 11, 50);
+    rect(195, 25, 11, 50);
+    textSize(23);
+    text("Press Pause", 15, 55);
 }
 
 function draw() {
      background('orange');
     fill('white');
     drawButton();
+//    drawButton2();
+    
     
   
     
@@ -38,22 +51,27 @@ function draw() {
 
     //console.log("gridwidth: " + gridwidth)
     
-    console.log("start loop")
+    console.log("start loop");
     
+    push();
     for(var x = 105; x < width - 100; x += 200)
         for(var y = 205; y < height - 100; y += 200)
     {
         //console.log(i, x, y);
-        drawPattern(x, y);
+        drawPattern(x, y, rot);
+        
        
     } 
+    pop();
     
+
+   
     
 }
 
 
 
-function drawPattern(startX, startY) {
+function drawPattern(startX, startY, rot) {
     push();
     //    noStroke();
 
@@ -65,21 +83,25 @@ function drawPattern(startX, startY) {
     
     
     push();
-        rotate(frameCount / -100.0);
+    if(rot) {
+        rotate(frameCount / -100.0);}
         fill('yellow');
+
         polygon(0, 0, 100, 7);
     pop();
     
     push();
     fill('orange');
-    rotate((frameCount / -(100.0)));
+    if(rot) {
+    rotate((frameCount / -(100.0)));}
     polygon(0, 0, 80, 7);
     
     pop();
     
     push();
     fill('yellow');
-    rotate(frameCount / 50.0);
+    if(rot) {
+    rotate(frameCount / 50.0);}
     var radius = 20 + startX/100.+ startY/80.;
     polygon(0, 0, 50, 5);
     
@@ -99,6 +121,7 @@ function drawPattern(startX, startY) {
     pop();
      pop();
 }
+
 
 
 function polygon(x, y, radius, npoints) {
@@ -123,8 +146,16 @@ function mousePressed() {
         
         if(d < circleSize/2) {
             console.log("circle is clicked");
+            rot = 1;
+             
+            
              
     }
+}
+
+function mouseClicked() {
+    console.log("mouse is clicked");
+    drawPattern(x, y, rot);
 }
 
 
