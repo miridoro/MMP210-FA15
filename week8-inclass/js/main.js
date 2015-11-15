@@ -1,13 +1,15 @@
 //define global variables
-var cicleSize;
-var circleX, circleY;
+var displaceBy = 70;
+var cirlceX = 120 + displaceBy;
+var circleY = 50;
+var circleSize = 80;
 var x, y;
 //variable that sets state of rotation, 0 stands for 'off' and 1 stands for 'on'
 var rot = 0;
 //setting the state of my 'play button' and 'pause button'
 var playButton = 1;
 var pauseButton = 0;
-var displaceBy = 70;
+
 
 
 
@@ -19,9 +21,6 @@ function setup() {
 
 //function to draw the 'Play' button
 function drawPlayButton() {
-    cirlceX = 120 + displaceBy;
-    circleY = 50;
-    circleSize = 80;
     noStroke();
     ellipse(120 + displaceBy, 50, circleSize, circleSize);
     fill('black');
