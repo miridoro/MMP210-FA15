@@ -1,0 +1,49 @@
+.album {
+    width: 200px;
+    height: 250px;
+    display: block;
+    margin: auto;
+    float: left;
+/*    outline: black solid 1px;  */
+}
+
+img {
+    
+    width: 100px;
+    margin: auto;
+/*    float: center;*/
+    display: block;
+}
+
+h2 {
+    
+    text-align: center;
+    font-size: 1.3em;
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+p {
+    font-family: cursive;
+    color: deeppink;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+input{
+    
+/*    outline: deeppink solid 1px;*/
+    text-align: center;
+    margin: auto;
+    display: block;
+    float: center;
+    border-radius: 25px;
+    
+}
+
+button {
+    text-align: center;
+     margin: auto;
+    display: block;
+    float: center;
+}
