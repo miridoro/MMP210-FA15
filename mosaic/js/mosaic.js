@@ -1,5 +1,25 @@
 //document.getElementById("myText").value = "Hello!";
 
+//$('body')
+//.append('Album Title')
+//.css('color', 'red').addClass('myClass');
+
+
+
+//var div = document.createElement('div');
+//div.innerHTML = "Album Title";
+//div.src = "../placeholder.jpg";
+//// set style
+//// better to use CSS though - just set class
+//div.setAttribute('class', 'myClass'); // and make sure myclass has some styles in css
+//document.body.appendChild(div);
+
+
+
+
+
+
+
 
 document.getElementById('myText').onkeypress = function (e) {
     if (!e) e = window.event;
@@ -24,6 +44,11 @@ function updateData(data) {
     for (var i = 0; i < Math.min(5, data.resultCount); i++) {
         setTitle(i, data.results[i].collectionName);
         setImage(i, data.results[i].artworkUrl100);
+//        image(i, data.results[i].artworkUrl100);
+//        var newelement = $('<div class="new">');
+//        $('#mydiv').append(newelement);
+//        //alt
+//        $('<div class="new">').appendTo("#mydiv");
     }
 
 }
@@ -43,11 +68,6 @@ function updateArtist(artistname) {
 
 
 
-
-
-
-
-
 function setValue(id, value) {                     
     document.getElementById(id).text = value;        
 }
@@ -64,12 +84,19 @@ function setImage(n, value) {
 
 
 
-//     
-//function userInput() {
-////    document.getElementById('myText').text = input;
-//    var text=document.getElementById('myText').value;
-//    
-//}        
+function image(n, value) {
+    var img = document.createElement("IMG");
+    document.getElementById("imgageDiv" + n).appendChild(img);
+//    img.src = "../placeholder.jpg";
+    document.getElementById("image" + n).src = value;
+}
 
 
 
+//var cars = 'Saab,Volvo,BMW,GMC,Nissan,Ford'.split(',');
+//for (var c in cars) {
+//    var newElement = document.createElement('div');
+//    newElement.id = cars[c]; newElement.className = "car";
+//    newElement.innerHTML = cars[c];
+//    document.body.appendChild(newElement);
+//}

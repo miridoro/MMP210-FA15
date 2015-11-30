@@ -1,6 +1,6 @@
 .album {
     width: 200px;
-    height: 250px;
+    height: 200px;
     display: block;
     margin: auto;
 /*    float: center;*/
@@ -31,14 +31,12 @@ p {
 }
 
 input{
-    
 /*    outline: deeppink solid 1px;*/
     text-align: center;
     margin: auto;
     display: block;
     float: center;
     border-radius: 25px;
-    
 }
 
 button {
@@ -46,4 +44,19 @@ button {
      margin: auto;
     display: block;
     float: center;
+}
+
+.myClass {
+    text-align: center;
+    color: black;
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+    outline: black solid 2px;
+/*    background-color: lightyellow;*/
+}
+
+myImage {
+    
 }
