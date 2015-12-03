@@ -57,6 +57,11 @@ button {
 /*    background-color: lightyellow;*/
 }
 
-myImage {
-    
+.car {
+      width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+/*    float: center;*/
+    outline: black solid 1px;  
 }
