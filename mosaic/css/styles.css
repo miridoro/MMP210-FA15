@@ -1,18 +1,14 @@
 .album {
-    width: 200px;
-    height: 200px;
-    display: block;
-    margin: auto;
-/*    float: center;*/
-/*    outline: black solid 1px;  */
+    width: 150px;
+    height: 150px;
+    float: left;
+/*    outline: blue solid 1px;  */
 }
 
 img {
     
-    width: 100px;
-    margin: auto;
-/*    float: center;*/
-    display: block;
+    width: 150px;
+    height:150px;
 }
 
 h2 {
@@ -24,8 +20,8 @@ h2 {
 }
 
 p {
-    font-family: cursive;
-    color: deeppink;
+    font-family: helvetica;
+    color: purple;
     font-size: 1.5em;
     text-align: center;
 }

@@ -64,9 +64,9 @@ function setImage(n, value) {
 
 
 
-function image(n, value) {
-    var img = document.createElement("IMG");
-    document.getElementById("imgageDiv" + n).appendChild(img);
-    document.getElementById("image" + n).src = value;
-}
+//function image(n, value) {
+//    var img = document.createElement("IMG");
+//    document.getElementById("imgageDiv" + n).appendChild(img);
+//    document.getElementById("image" + n).src = value;
+//}
 
