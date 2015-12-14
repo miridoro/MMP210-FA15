@@ -15,7 +15,8 @@
 //document.body.appendChild(div);
 
 
-
+var albumID;
+var url2;
 
 
 
@@ -38,16 +39,27 @@ document.getElementById('myText').onkeypress = function (e) {
 
 
 
+
+
+function updateArtist(artistname) {
+    var url = "https://itunes.apple.com/search?entity=album&term=" + artistname + "&callback=?";
+//    console.log(url);
+
+    //callback, a function you pass to get called later (ie button)
+
+    
+    $.getJSON(url, updateData);
+}
+
+
+
 function updateData(data) {
-    //prints to concole
     //    console.log(data);
     
     
     $('#albumAnchor').empty();
     
     
-//    results[i].artworkUrl100.replace("100x100bb.jpg", "300x300bb.jpg");
-//    document.getElementById("#albumAnchor").innerHTML = res;
     //set first album title to first element of the JSON data
 
     for (var i = 0; i < Math.min(data.resultCount); i++) {
@@ -56,51 +68,51 @@ function updateData(data) {
         
         
         setImage(i, data.results[i].artworkUrl100.replace("100x100", "250x250"));
+//        console.log(data.results[i].artworkUrl100.replace("100x100", "250x250"));
+        albumID = data.results[i].collectionId;
+//        console.log(albumID);
+        updateSongID(albumID);
         
         
-        
-        
-//        $( "#image1").append( "<div>Hello</div>" );
-        
-//        $("#foo").append(data.results[i].artworkUrl100);
-        
-//        var src = $('#image' + i).attr('src');
-//        var newDiv = document.createElement('div');
-////        newDiv.className='test';
-//$('#foo').append('<img src="' + src + '" />');
-           
-//        var newDiv = document.createElement('div');
-////        var title = document.getElementById("title" + i);
-//        var img = document.getElementById("image" + i);
-////        newDiv.appendChild(title);
-//        newDiv.appendChild(img);
-////        $( "#title" + i).append( setTitle(i, data.results[i].collectionName));
-//        document.body.appendChild(newDiv);
-       
-        
-//        setImage(i, $("#foo").append(data.results[i].artworkUrl100));
-        
-//        image(i, data.results[i].artworkUrl100);
-        
-//        var newelement = $('<div class="new">');
-//        $('#mydiv').append(newelement);
-//        //alt
-//        $('<div class="new">').appendTo("#mydiv");
+    
         
     }
+    
+    
 }
 
-//https://itunes.apple.com/lookup?id=1034548392&entity=song
 
 
-
-function updateArtist(artistname) {
-    var url = "https://itunes.apple.com/search?entity=album&term=" + artistname + "&callback=?";
-
-    //callback, a function you pass to get called later (ie button)
-
+function updateSongID(albumID) {
+    urlSong = "https://itunes.apple.com/lookup?id=" + albumID + "&entity=song"  + "&callback=?";
     
-    $.getJSON(url, updateData);
+    console.log(urlSong);
+    
+//    $.getJSON(urlSong, updateSong);
+    getSong(urlSong);
+    
+    
+}
+
+function updateSong(data) {
+    
+     for (var i = 0; i < Math.min(data.resultCount); i++) {
+    
+        setSong(data.results[i].previewUrl);
+         console.log(data.results[i].previewUrl);
+  
+    }
+    
+}
+
+
+
+
+
+function setSong(url) {
+//    window.open('http://a148.phobos.apple.com/us/r30/Music4/v4/ad/48/48/ad4848ae-da73-ddd1-7c79-704763829aa9/mzaf_1406262765517523840.plus.aac.p.m4a');
+    window.open(url);
+    
 }
 
 
@@ -113,7 +125,7 @@ function createDiv(n){
     
     
     
-    $('#albumAnchor').append('<div id="div' + n + '"' + ' class="album"><h2 class="title"></h2><img  class="image" src="placeholder.jpg" alt="placeholder" width="200px"></div>');
+    $('#albumAnchor').append('<a id="mySong" onClick="setSong()"><div id="div' + n + '"' + ' class="album"><h2 class="title"></h2><img class="image" src="placeholder.jpg" alt="placeholder" width="200px"></div></a>');
     
     
     
@@ -123,6 +135,7 @@ function createDiv(n){
     
    
 }
+
 
 
 
@@ -147,11 +160,7 @@ function setImage(n, value) {
     
 }
 
-//function interactDiv(currentDiv){
-//    if hover
-//        incr div by width, height;
-//    
-//}
+
 
 
 
