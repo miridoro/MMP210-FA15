@@ -44,14 +44,18 @@ function updateData(data) {
     
     
     $('#albumAnchor').empty();
-
+    
+    
+//    results[i].artworkUrl100.replace("100x100bb.jpg", "300x300bb.jpg");
+//    document.getElementById("#albumAnchor").innerHTML = res;
     //set first album title to first element of the JSON data
 
     for (var i = 0; i < Math.min(data.resultCount); i++) {
         createDiv(i);
 //        setTitle(i, data.results[i].collectionName);
-        setImage(i, data.results[i].artworkUrl100);
         
+        
+        setImage(i, data.results[i].artworkUrl100.replace("100x100", "250x250"));
         
         
         
@@ -82,9 +86,12 @@ function updateData(data) {
 //        $('#mydiv').append(newelement);
 //        //alt
 //        $('<div class="new">').appendTo("#mydiv");
+        
     }
-
 }
+
+//https://itunes.apple.com/lookup?id=1034548392&entity=song
+
 
 
 function updateArtist(artistname) {
@@ -140,6 +147,12 @@ function setImage(n, value) {
     
 }
 
+//function interactDiv(currentDiv){
+//    if hover
+//        incr div by width, height;
+//    
+//}
+
 
 
 function image(n, value) {
@@ -147,8 +160,6 @@ function image(n, value) {
     document.getElementById("imgageDiv" + n).appendChild(img);
     document.getElementById("image" + n).src = value;
 }
-
-
 
 
 

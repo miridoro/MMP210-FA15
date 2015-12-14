@@ -2,13 +2,44 @@
     width: 150px;
     height: 150px;
     float: left;
+     -webkit-opacity: 0.45;
+  -moz-opacity: 0.45;
+/*  opacity: 0.45;*/
 /*    outline: blue solid 1px;  */
+    z-index: 1;
+}
+
+.album:hover {
+    position: relative;
+/*
+    top: -10px; 
+    bottom: -10px;
+*/
+    transition: 0;
+     -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+/*    transform: rotateY(180deg);*/
+    z-index: 2;
+   
 }
 
 img {
     
     width: 150px;
     height:150px;
+}
+
+img:hover {
+    display: block;
+    margin: -50px;
+/*    float: center;*/
+    width: 250px;
+    height: 250px;
+    transition: 0.7s;
+    padding-top: 0px;
+    opacity: 1;
+    z-index: 2000;
 }
 
 h2 {
