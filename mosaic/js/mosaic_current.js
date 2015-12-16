@@ -17,7 +17,10 @@
 
 var albumID;
 var url2;
-
+var array = [];
+var urlSong_array = [];
+var urlSong;
+var song;
 
 
 
@@ -42,7 +45,7 @@ document.getElementById('myText').onkeypress = function (e) {
 
 
 function updateArtist(artistname) {
-    var url = "https://itunes.apple.com/search?entity=album&term=" + artistname + "&callback=?";
+    var url = "https://itunes.apple.com/search?entity=album&term=" + artistname + "&limit=3&callback=?";
 //    console.log(url);
 
     //callback, a function you pass to get called later (ie button)
@@ -69,49 +72,96 @@ function updateData(data) {
         
         setImage(i, data.results[i].artworkUrl100.replace("100x100", "250x250"));
 //        console.log(data.results[i].artworkUrl100.replace("100x100", "250x250"));
-        albumID = data.results[i].collectionId;
-//        console.log(albumID);
-        updateSongID(albumID);
+        
+        var img = $('#div' + i + ' img')
+        img.data('albumId', data.results[i].collectionId);
+        img.click(coverClick.bind(img) );
+        
+        //console.log($('#div' + i + ' img').data('albumId'));
+        //callback passes function to be called later
+        
+        
+         
+//        updateSongID(albumID);
+//        albumID = data.results[i].collectionId;
+//        array.push(albumID);
         
         
     
         
     }
     
+//console.log(array);
+//    updateSongID(array);
+   
     
 }
 
 
 
-function updateSongID(albumID) {
-    urlSong = "https://itunes.apple.com/lookup?id=" + albumID + "&entity=song"  + "&callback=?";
-    
-    console.log(urlSong);
-    
-//    $.getJSON(urlSong, updateSong);
-    getSong(urlSong);
-    
-    
-}
+function updateSongID(array) {
 
-function updateSong(data) {
+//    getSong(urlSong);
     
-     for (var i = 0; i < Math.min(data.resultCount); i++) {
     
-        setSong(data.results[i].previewUrl);
-         console.log(data.results[i].previewUrl);
-  
+    
+     for (var i = 0; i < array.length; i++) {
+    
+
+//  urlSong_array.push("https://itunes.apple.com/lookup?id=" + array[i] + "&entity=song");
+         urlSong = ("https://itunes.apple.com/lookup?id=" + array[i] + "&entity=song" + "&callback=?");
+         
+         var cover_id = "#div" + i + " .image"
+         
+//         setSong(urlSong_array[i]);
+         $.getJSON(urlSong, function (data) {
+             var url = data.results[1].previewUrl;
+             console.log(cover_id + ": " + url);
+             //$('#div' + i + " .image").click(function () {window.open(url);});
+             
+             // $('#div' + i + " .image").click(function () {window.open(url);});
+             
+         });
+         
+         
     }
     
+     
+//    console.log(urlSong);
+//    console.log(urlSong_array[6].results.previewUrl);
 }
 
 
+function updateSongData(data) {
+        setSong(data.results[1].previewUrl);
+    console.log(song);
+    
+    
+}
 
+
+function coverClick () {
+   // window.open(url);
+//console.log(this);
+   console.log(this.data("albumId"));
+    
+    var audio = new Audio('http://a1852.phobos.apple.com/us/r1000/104/Music/1f/f3/08/mzi.sdrpeeep.aac.p.m4a');
+audio.play();
+}
 
 
 function setSong(url) {
-//    window.open('http://a148.phobos.apple.com/us/r30/Music4/v4/ad/48/48/ad4848ae-da73-ddd1-7c79-704763829aa9/mzaf_1406262765517523840.plus.aac.p.m4a');
-    window.open(url);
+
+//    window.open(url);
+//    setSong(song);
+    
+   // $('.image').attr('onClick', coverClick);
+   // $('.image').attr('onClick', function () {window.open(url);};
+                     
+   //$('.image').attr('onClick', "\"window.open(" + url + ")\"" );
+    
+    //$('.image').click(function () {window.open(url);});
+ 
     
 }
 
@@ -125,7 +175,7 @@ function createDiv(n){
     
     
     
-    $('#albumAnchor').append('<a id="mySong" onClick="setSong()"><div id="div' + n + '"' + ' class="album"><h2 class="title"></h2><img class="image" src="placeholder.jpg" alt="placeholder" width="200px"></div></a>');
+    $('#albumAnchor').append('<div id="div' + n + '"' + ' class="album"><h2 class="title"></h2><img class="image" src="placeholder.jpg" alt="placeholder" width="200px"></div>');
     
     
     
@@ -141,6 +191,11 @@ function createDiv(n){
 
 function setValue(id, value) {                     
     document.getElementById(id).text = value;        
+}
+
+function setAlbumID(n, value) {
+    $('#div' + n + ' img').data('albumId', value);
+    
 }
 
 
