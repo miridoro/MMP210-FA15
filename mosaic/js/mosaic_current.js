@@ -21,6 +21,8 @@ var array = [];
 var urlSong_array = [];
 var urlSong;
 var song;
+var audio;
+var playing;
 
 
 
@@ -61,6 +63,7 @@ function updateData(data) {
     
     
     $('#albumAnchor').empty();
+    playing = false;
     
     
     //set first album title to first element of the JSON data
@@ -75,7 +78,13 @@ function updateData(data) {
         
         var img = $('#div' + i + ' img')
         img.data('albumId', data.results[i].collectionId);
-        img.click(coverClick.bind(img) );
+        
+       
+        img.click(coverClick.bind(img));
+        
+        
+          
+        
         
         //console.log($('#div' + i + ' img').data('albumId'));
         //callback passes function to be called later
@@ -139,15 +148,61 @@ function updateSongData(data) {
     
 }
 
+function coverClick() {
+    // window.open(url);
+    //console.log(this);
+    console.log(this.data("albumId"));
 
-function coverClick () {
-   // window.open(url);
-//console.log(this);
-   console.log(this.data("albumId"));
-    
-    var audio = new Audio('http://a1852.phobos.apple.com/us/r1000/104/Music/1f/f3/08/mzi.sdrpeeep.aac.p.m4a');
-audio.play();
+    var this_id = this.data("albumId");
+
+    urlSong = ("https://itunes.apple.com/lookup?id=" + this_id + "&entity=song" + "&callback=?");
+
+    $.getJSON(urlSong, function (data) {
+        var url = data.results[1].previewUrl;
+        //        console.log(url);
+        audio = new Audio(url);
+
+
+        if (!playing) {
+            audio.play();
+            playing=true;
+        } else {
+            audio.pause();
+            playing=false;
+        }
+
+    });
+
 }
+
+function coverClick2() {
+    // window.open(url);
+    //console.log(this);
+    console.log(this.data("albumId"));
+
+    var this_id = this.data("albumId");
+
+    urlSong = ("https://itunes.apple.com/lookup?id=" + this_id + "&entity=song" + "&callback=?");
+
+    $.getJSON(urlSong, function (data) {
+        var url = data.results[1].previewUrl;
+        //        console.log(url);
+        audio = new Audio(url);
+
+
+        if (!playing) {
+            audio.play();
+            playing=true;
+        } else {
+            audio.pause();
+            playing=false;
+        }
+
+    });
+
+}
+
+
 
 
 function setSong(url) {
