@@ -1,5 +1,4 @@
 var albumID;
-var song;
 var audio;
 var playing;
 
@@ -33,6 +32,8 @@ function updateArtist(artistname) {
 
 
 
+// accesses JSON data
+
 function updateData(data) {
 
     $('#albumAnchor').empty();
@@ -44,47 +45,25 @@ function updateData(data) {
     for (var i = 0; i < Math.min(data.resultCount); i++) {
         createDiv(i);
         
-        //        setTitle(i, data.results[i].collectionName);
-
+        
+        //this function sets img value to an image from JSON data
         setImage(i, data.results[i].artworkUrl100.replace("100x100", "250x250"));
 
-        var img = $('#div' + i + ' img')
+        var img = $('#div' + i + ' img');
+        //append collectionId as type data to each image within div
         img.data('albumId', data.results[i].collectionId);
 
-
+        //when img gets clicked, call coverClick function
         img.click(coverClick.bind(img));
 
-        //console.log($('#div' + i + ' img').data('albumId'));
 
     } //end for loop
     
 } // end udateData function
 
+ 
 
 
-function updateSongID(array) {
-
-    for (var i = 0; i < array.length; i++) {
-
-        urlSong = ("https://itunes.apple.com/lookup?id=" + array[i] + "&entity=song" + "&callback=?");
-
-        var cover_id = "#div" + i + " .image"
-
-        $.getJSON(urlSong, function (data) {
-            var url = data.results[1].previewUrl;
-            console.log(cover_id + ": " + url);
-        });
-
-    }  // end for loop
-
-} // end updateSongID
-
-
-
-function updateSongData(data) {
-    setSong(data.results[1].previewUrl);
-    console.log(song);
-}
 
 
 //when its already true, just need to pause
@@ -92,13 +71,14 @@ function updateSongData(data) {
 
 
 function coverClick() {
-    // window.open(url);
-    //console.log(this);
+    
+    //check that the clicked image has a unique ID
     console.log(this.data("albumId"));
 
 
-
-
+// if playing == false, or if song is not playing
+// go ahead and retrieve the first .m4a file within JSON data
+    
     if (!playing) {
 
         var this_id = this.data("albumId");
@@ -107,6 +87,7 @@ function coverClick() {
         $.getJSON(urlSong, function (data) {
 
             var url = data.results[1].previewUrl;
+            //create an audio object, play audio
             audio = new Audio(url);
             audio.play();
             playing = true;
@@ -123,8 +104,7 @@ function coverClick() {
 
 
 function coverClick2() {
-    // window.open(url);
-    //console.log(this);
+  
     console.log(this.data("albumId"));
 
     var this_id = this.data("albumId");
@@ -133,7 +113,6 @@ function coverClick2() {
 
     $.getJSON(urlSong, function (data) {
         var url = data.results[1].previewUrl;
-        //        console.log(url);
         audio = new Audio(url);
 
 
@@ -156,31 +135,30 @@ function createDiv(n) {
   
     $('#albumAnchor').append('<div id="div' + n + '"' + ' class="album"><h2 class="title"></h2><img class="image" src="placeholder.jpg" alt="placeholder" width="200px"></div>');
     
-}
+} // end createDiv function
 
 
 
-
-function setValue(id, value) {                     
-    document.getElementById(id).text = value;        
-}
 
 
 function setAlbumID(n, value) {
     $('#div' + n + ' img').data('albumId', value);
-
 }
 
 
 function setTitle(n, value) {
     //    document.getElementById("title" + n).innerText = value;  
     $('#div' + n + ' .title').text(value);
-}
+    
+} //end setTitle function
+
+
+
 
 function setImage(n, value) {
     //    document.getElementById("image" + n).src = value;
     $('#div' + n + ' img').attr('src', value);
 
-}
+} // end setImage function
 
 
