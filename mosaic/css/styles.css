@@ -46,8 +46,8 @@ h2 {
 }
 
 p {
-    font-family: helvetica;
-    color: purple;
+    font-family: helvetica, sans-serif;
+    color: rebeccapurple;
     font-size: 1.5em;
     text-align: center;
 }
@@ -57,7 +57,12 @@ input{
     margin: auto;
     display: block;
     float: center;
-    border-radius: 25px;
+    border-radius: 20px;
+    width: 130px;
+    height: 25px;
+    font-family: Helvetica, sans-serif;
+    font-size: 1em;
+    color: blue;
 }
 
 button {
@@ -77,10 +82,3 @@ button {
     outline: black solid 2px;
 }
 
-.car {
-      width: 200px;
-    height: 200px;
-    display: block;
-    margin: auto;
-    outline: black solid 1px;  
-}
