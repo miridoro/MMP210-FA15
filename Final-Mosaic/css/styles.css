@@ -65,12 +65,6 @@ input{
     color: blue;
 }
 
-button {
-    text-align: center;
-     margin: auto;
-    display: block;
-    float: center;
-}
 
 .myClass {
     text-align: center;

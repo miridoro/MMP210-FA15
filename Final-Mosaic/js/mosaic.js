@@ -72,39 +72,6 @@ function updateData(data) {
 
 
 
-function coverClick2() {
-
-    //check that the clicked image has a unique ID
-    console.log(this.data("albumId"));
-
-
-    // if playing == false, or if song is not playing
-    // go ahead and retrieve the first .m4a file within JSON data
-
-
-    if (!playing) {
-
-        var this_id = this.data("albumId");
-
-        var urlSong = ("https://itunes.apple.com/lookup?id=" + this_id + "&entity=song" + "&callback=?");
-
-        $.getJSON(urlSong, function (data) {
-
-            var url = data.results[1].previewUrl;
-            //create an audio object, play audio
-            audio = new Audio(url);
-            audio.play();
-            playing = true;
-
-        });
-    } else {
-
-        audio.pause();
-        playing = false;
-    }
-
-
-} // end coverClick2() function
 
 
 
@@ -175,7 +142,3 @@ function setImage(n, value) {
 } // end setImage() function
 
 
-
-function setAlbumID(n, value) {
-    $('#div' + n + ' img').data('albumId', value);
-}
