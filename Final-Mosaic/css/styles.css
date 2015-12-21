@@ -1,0 +1,84 @@
+.album {
+    width: 150px;
+    height: 150px;
+    float: left;
+    -webkit-opacity: 0.45;
+    -moz-opacity: 0.45;
+/*  opacity: 0.45;*/
+    z-index: 1;
+}
+
+
+.album:hover {
+    position: relative;
+    transition: 0;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+    z-index: 2;
+   
+}
+
+img {
+    
+    width: 150px;
+    height:150px;
+}
+
+img:hover {
+    display: block;
+    margin: -50px;
+    width: 250px;
+    height: 250px;
+    transition: 0.7s;
+    padding-top: 0px;
+    opacity: 1;
+    z-index: 2000;
+/*    transform: rotateY(180deg);*/
+}
+
+h2 {
+    
+    text-align: center;
+    font-size: 1.3em;
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+p {
+    font-family: helvetica, sans-serif;
+    color: rebeccapurple;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+input{
+    text-align: center;
+    margin: auto;
+    display: block;
+    float: center;
+    border-radius: 20px;
+    width: 130px;
+    height: 25px;
+    font-family: Helvetica, sans-serif;
+    font-size: 1em;
+    color: blue;
+}
+
+button {
+    text-align: center;
+     margin: auto;
+    display: block;
+    float: center;
+}
+
+.myClass {
+    text-align: center;
+    color: black;
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: auto;
+    outline: black solid 2px;
+}
+
