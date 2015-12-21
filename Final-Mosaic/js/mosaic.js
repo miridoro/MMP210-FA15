@@ -1,7 +1,5 @@
 //global variables
-//var albumID;
 var audio = null;
-//var playing = false;
 var current_album = "";
 
 
@@ -36,6 +34,7 @@ function updateArtist(artistname) {
 } // end udateArtist() function
 
 
+//if no JSON data is received (ie no internet signal), this message will appear on console
 function JsonFailCallback() {
     
     console.log( "JSON request failed" );
@@ -46,10 +45,10 @@ function JsonFailCallback() {
 function updateData(data) {
 
     $('#albumAnchor').empty();
-    //    playing = false;
+    
 
 
-    for (var i = 0; i < Math.min(data.resultCount); i++) {
+    for (var i = 0; i < data.resultCount; i++) {
         createDiv(i);
 
 
@@ -68,9 +67,6 @@ function updateData(data) {
     } //end for loop
 
 } // end updateData() function
-
-
-
 
 
 
